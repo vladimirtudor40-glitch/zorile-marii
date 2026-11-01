@@ -1,0 +1,1275 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Zorile Mării, restaurant cu pește proaspăt, fructe de mare și bucătărie românească pe faleza din Constanța, cu panoramă spre Portul Tomis.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%23F2B33D%22/></svg>">
+<title>Zorile Mării</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Instrument+Serif:ital@0;1&display=swap">
+<style>:root{color-scheme:light}body{background:#F3ECDF;color:#14283A}#root:empty::after{content:"ZORILE MĂRII";display:block;padding:40vh 20px;text-align:center;font:400 44px Anton,Impact,sans-serif;color:#14283A}</style>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/framer-motion@10.16.4/dist/framer-motion.js"></script>
+<script>window.react = window.React;</script>
+<script src="https://unpkg.com/lucide-react@0.263.1/dist/umd/lucide-react.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.24.7/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script>window.__IMG = {"1500375592092-40eb2168fd21":"images/1500375592092-40eb2168fd21.jpg","1559339352-11d035aa65de":"images/1559339352-11d035aa65de.jpg","1414235077428-338989a2e8c0":"images/1414235077428-338989a2e8c0.jpg","1517248135467-4c7edcad34c4":"images/1517248135467-4c7edcad34c4.jpg","1615141982883-c7ad0e69fd62":"images/1615141982883-c7ad0e69fd62.jpg","1467003909585-2f8a72700288":"images/1467003909585-2f8a72700288.jpg","1519708227418-c8fd9a32b7a2":"images/1519708227418-c8fd9a32b7a2.jpg","1565680018434-b513d5e5fd47":"images/1565680018434-b513d5e5fd47.jpg","1625943553852-781c6dd46faa":"images/1625943553852-781c6dd46faa.jpg","1534080564583-6be75777b70a":"images/1534080564583-6be75777b70a.jpg","1544025162-d76694265947":"images/1544025162-d76694265947.jpg","1600891964092-4316c288032e":"images/1600891964092-4316c288032e.jpg","1510812431401-41d2bd2722f3":"images/1510812431401-41d2bd2722f3.jpg","1514362545857-3bc16c4c7d1b":"images/1514362545857-3bc16c4c7d1b.jpg","1470337458703-46ad1756a187":"images/1470337458703-46ad1756a187.jpg","1533777857889-4be7c70b33f7":"images/1533777857889-4be7c70b33f7.jpg","1550966871-3ed3cdb5ed0c":"images/1550966871-3ed3cdb5ed0c.jpg","1506377247377-2a5b3b417ebb":"images/1506377247377-2a5b3b417ebb.jpg"};</script>
+<script type="text/babel" data-presets="react">
+const { useEffect, useMemo, useRef, useState } = React;
+const { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } = window.Motion;
+const {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  Clock,
+  Copy,
+  Fish,
+  Flame,
+  Leaf,
+  MapPin,
+  Minus,
+  Moon,
+  Music,
+  Phone,
+  Plus,
+  Sun,
+  Sunrise,
+  Users,
+  UtensilsCrossed,
+  Waves,
+  Wine,
+  X,
+} = window.LucideReact;
+
+/* ------------------------------------------------------------------ */
+/*  Date de business & conținut                                        */
+/* ------------------------------------------------------------------ */
+
+const PHONE_DISPLAY = "0241 619 545";
+const PHONE_TEL = "+40241619545";
+const ADDRESS = "Strada Ștefan cel Mare, Constanța";
+const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=Restaurant+Zorile+M%C4%83rii+Constan%C8%9Ba";
+
+const img = (id) => window.__IMG[id];
+
+const IMAGES = {
+  hero: img("1500375592092-40eb2168fd21", 2000),
+  terrace: img("1559339352-11d035aa65de"),
+  table: img("1414235077428-338989a2e8c0"),
+  interior: img("1517248135467-4c7edcad34c4"),
+  catch: img("1615141982883-c7ad0e69fd62"),
+  fishPlate: img("1467003909585-2f8a72700288"),
+  salmon: img("1519708227418-c8fd9a32b7a2"),
+  prawns: img("1565680018434-b513d5e5fd47"),
+  prawnPan: img("1625943553852-781c6dd46faa"),
+  seafoodRice: img("1534080564583-6be75777b70a"),
+  ribs: img("1544025162-d76694265947"),
+  steak: img("1600891964092-4316c288032e"),
+  wineToast: img("1510812431401-41d2bd2722f3"),
+  cocktail: img("1514362545857-3bc16c4c7d1b"),
+  whisky: img("1470337458703-46ad1756a187"),
+  liveNight: img("1533777857889-4be7c70b33f7"),
+  salon: img("1550966871-3ed3cdb5ed0c"),
+  vineyard: img("1506377247377-2a5b3b417ebb"),
+};
+
+// Program: 0 = duminică … 6 = sâmbătă. Închidere în minute de la miezul nopții.
+const HOURS = { 0: 23 * 60 + 30, 1: 22 * 60, 2: 22 * 60, 3: 22 * 60, 4: 22 * 60, 5: 23 * 60 + 30, 6: 22 * 60 };
+const OPEN_AT = 9 * 60;
+
+const NAV = [
+  { id: "poveste", label: "Povestea" },
+  { id: "ritm", label: "Zilele la mare" },
+  { id: "meniu", label: "Meniu" },
+  { id: "evenimente", label: "Evenimente" },
+  { id: "contact", label: "Rezervări" },
+];
+
+const MENU = [
+  {
+    id: "peste",
+    label: "Captură Proaspătă & Pește",
+    short: "Pește",
+    icon: Fish,
+    image: IMAGES.catch,
+    caption: "Captura zilei, adusă dimineața din portul Constanța.",
+    dishes: [
+      { name: "Calcan de Marea Neagră la grătar", desc: "Calcan întreg, unt cu lămâie arsă, capere și ierburi de litoral.", price: 189, tags: ["Captura zilei", "Fără gluten"], image: IMAGES.fishPlate },
+      { name: "Lufar în crustă de sare", desc: "Copt la masă, servit cu ulei de măsline extravirgin și fenicul crocant.", price: 142, tags: ["Pentru 2", "Fără gluten"] },
+      { name: "Hamsii prăjite, ca la Tomis", desc: "Hamsii crocante, mujdei de usturoi și felii de lămâie.", price: 54, tags: ["Tradițional"] },
+      { name: "Platou pescăresc Zorile Mării", desc: "Calcan, lufar, barbun, stavrid și midii, cartofi noi cu mărar.", price: 420, tags: ["Pentru 3–4", "Recomandarea casei"], image: IMAGES.catch },
+      { name: "Somon pe pat de spanac", desc: "Somon norvegian, beurre blanc cu șofran și legume de sezon.", price: 98, tags: ["Fără gluten"], image: IMAGES.salmon },
+    ],
+  },
+  {
+    id: "fructe",
+    label: "Fructe de Mare",
+    short: "Fructe de mare",
+    icon: Waves,
+    image: IMAGES.prawnPan,
+    caption: "Midii de Marea Neagră, creveți și scoici, gătite simplu.",
+    dishes: [
+      { name: "Midii de Marea Neagră în vin alb", desc: "Midii din fermele de la Agigea, usturoi, pătrunjel și pâine de casă.", price: 69, tags: ["Local", "Fără lactoze"] },
+      { name: "Creveți tigru la tigaie", desc: "Creveți în unt cu usturoi, chili blând și busuioc proaspăt.", price: 112, tags: ["Picant"], image: IMAGES.prawnPan },
+      { name: "Creveți regali la grătar", desc: "Marinați în lămâie și ierburi, cu sos aioli de casă.", price: 136, tags: ["Fără gluten"], image: IMAGES.prawns },
+      { name: "Orez cu fructe de mare", desc: "Orez cremos cu șofran, midii, calamar și creveți, gătit în tigaie de fontă.", price: 148, tags: ["Pentru 2"], image: IMAGES.seafoodRice },
+      { name: "Calamar crocant", desc: "Inele de calamar în pesmet ușor, maioneză cu lime.", price: 64, tags: ["De împărțit"] },
+    ],
+  },
+  {
+    id: "traditional",
+    label: "Tradițional Românesc",
+    short: "Tradițional",
+    icon: UtensilsCrossed,
+    image: IMAGES.ribs,
+    caption: "Rețete dobrogene și românești, reinterpretate cu măsură.",
+    dishes: [
+      { name: "Ciorbă pescărească dobrogeană", desc: "Trei feluri de pește, legume de grădină, borș de casă și leuștean.", price: 46, tags: ["Tradițional", "Fără lactoze"] },
+      { name: "Saramură de crap cu mămăligă", desc: "Crap la jar, saramură cu ardei copt și mămăligă moale.", price: 78, tags: ["Tradițional", "Fără gluten"] },
+      { name: "Coaste de porc afumate", desc: "Afumate lent cu lemn de fag, glazură de miere și cartofi țărănești.", price: 89, tags: ["Pe jar"], image: IMAGES.ribs },
+      { name: "Mușchi de vită cu ierburi", desc: "Mușchi maturat, cartofi copți cu rozmarin și sos de piper.", price: 154, tags: ["Pe jar", "Fără gluten"], image: IMAGES.steak },
+      { name: "Plăcintă dobrogeană cu brânză", desc: "Foi întinse manual, brânză de oaie și smântână.", price: 34, tags: ["Vegetarian"] },
+    ],
+  },
+  {
+    id: "vinuri",
+    label: "Vinuri & Cocktailuri",
+    short: "Vinuri",
+    icon: Wine,
+    image: IMAGES.wineToast,
+    caption: "Crame dobrogene alături de etichete din toată lumea.",
+    dishes: [
+      { name: "Fetească Neagră, Dealurile Babadagului", desc: "Roșu catifelat, prune uscate și condimente dulci. Pahar / sticlă.", price: 32, priceAlt: 165, tags: ["Dobrogea"], image: IMAGES.wineToast },
+      { name: "Chardonnay de Murfatlar", desc: "Alb rotund, piersică albă și o notă fină de baton. Pahar / sticlă.", price: 28, priceAlt: 140, tags: ["Dobrogea"] },
+      { name: "Rosé de Sarica Niculițel", desc: "Proaspăt, căpșuni sălbatice, perfect pentru terasă. Pahar / sticlă.", price: 26, priceAlt: 130, tags: ["Dobrogea"] },
+      { name: "Zorile Mării Spritz", desc: "Aperitiv de portocală amară, prosecco, apă tonică și rozmarin.", price: 42, tags: ["Semnătura casei"], image: IMAGES.cocktail },
+      { name: "Apus peste Tomis", desc: "Whisky afumat, sirop de miere de salcâm, lămâie și cuburi mari de gheață.", price: 48, tags: ["Semnătura casei"], image: IMAGES.whisky },
+    ],
+  },
+];
+
+const RHYTHM = [
+  { time: "09:00", title: "Dimineața", line: "cafea cu răsăritul", tags: "Cafea / Lumină / Liniște", text: "Prima cafea a zilei, cu lumina care se ridică direct din mare. Terasa e încă liniștită, iar briza e rece.", image: IMAGES.salon },
+  { time: "13:00", title: "Prânzul", line: "captura zilei", tags: "Pește / Midii / Vin alb", text: "Peștele se alege dimineața, după ce intră bărcile în port. La prânz ajunge pe grătar, simplu, cu lămâie și ierburi.", image: IMAGES.fishPlate },
+  { time: "19:00", title: "Apusul", line: "un spritz pe terasă", tags: "Aperitiv / Apus / Briză", text: "Cel mai frumos apus din Constanța, chiar deasupra Portului Tomis. Un Zorile Mării Spritz și nimic de grăbit.", image: IMAGES.cocktail },
+  { time: "21:00", title: "Seara", line: "muzică și vin dobrogean", tags: "Live / Fetească / Prieteni", text: "Vineri și duminică, muzică live până la 23:30. Seri lungi, cu marea în fundal și un pahar de vin de Murfatlar.", image: IMAGES.liveNight },
+];
+
+const TICKER_1 = ["Pește proaspăt", "Fructe de mare", "Vin dobrogean", "Apus peste Tomis", "Terasă cu panoramă", "Muzică live"];
+const TICKER_2 = ["O masă lângă mare", "Din zori până la apus", "O masă lângă mare", "Din zori până la apus"];
+
+/* ------------------------------------------------------------------ */
+/*  Utilitare                                                          */
+/* ------------------------------------------------------------------ */
+
+const EASE = [0.22, 1, 0.36, 1];
+
+function bucharestNow() {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Bucharest",
+    weekday: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(new Date());
+  const get = (t) => parts.find((p) => p.type === t)?.value;
+  const day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(get("weekday"));
+  return { day, minutes: Number(get("hour")) * 60 + Number(get("minute")) };
+}
+
+const fmtTime = (m) => `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
+const pad = (n) => String(n).padStart(2, "0");
+
+function useOpenStatus() {
+  const [now, setNow] = useState(bucharestNow);
+  useEffect(() => {
+    const t = setInterval(() => setNow(bucharestNow()), 60000);
+    return () => clearInterval(t);
+  }, []);
+  const close = HOURS[now.day];
+  const open = now.minutes >= OPEN_AT && now.minutes < close;
+  return {
+    open,
+    label: open ? `Deschis acum · până la ${fmtTime(close)}` : `Închis acum · deschidem la ${fmtTime(OPEN_AT)}`,
+  };
+}
+
+function scrollTo(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+/* ------------------------------------------------------------------ */
+/*  Stiluri globale                                                    */
+/* ------------------------------------------------------------------ */
+
+function GlobalStyles() {
+  return (
+    <style>{`
+      @import url('https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Instrument+Serif:ital@0;1&display=swap');
+      :root { color-scheme: light; }
+      html { scroll-behavior: smooth; }
+      body { background: #F3ECDF; margin: 0; }
+      .zm-root { font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif; color: #14283A; background: #F3ECDF; -webkit-font-smoothing: antialiased; }
+      .zm-serif { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; text-wrap: balance; }
+      .zm-bold { font-family: 'Anton', 'Impact', 'Arial Narrow', sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: 0.005em; }
+      .zm-num { font-variant-numeric: tabular-nums; }
+      .zm-gutter { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+      @media (min-width: 640px) { .zm-gutter { padding-left: 32px; padding-right: 32px; } }
+      .bg-cream { background-color: #F3ECDF; } .bg-paper { background-color: #FBF7F0; } .bg-ink { background-color: #14283A; }
+      .bg-sea { background-color: #2E5B6B; } .bg-sun { background-color: #F2B33D; } .bg-coral { background-color: #E0623A; }
+      .text-cream { color: #F3ECDF; } .text-ink { color: #14283A; } .text-sea { color: #2E5B6B; } .text-sun { color: #F2B33D; } .text-coral { color: #E0623A; }
+      .text-soft { color: #51606C; } .text-cream-soft { color: rgba(243,236,223,.74); }
+      .border-ink { border-color: #14283A; } .border-line { border-color: rgba(20,40,58,.14); } .border-cline { border-color: rgba(243,236,223,.18); }
+      .zm-focus:focus-visible { outline: 2px solid #E0623A; outline-offset: 3px; }
+      .zm-field { background: #FFFFFF; border: 1.5px solid rgba(20,40,58,.16); color: #14283A; transition: border-color .25s; }
+      .zm-field:focus { outline: none; border-color: #14283A; }
+      .zm-field::placeholder { color: #8A949C; }
+      .zm-noscroll::-webkit-scrollbar { display: none; } .zm-noscroll { scrollbar-width: none; }
+      .zm-marquee { display: flex; width: max-content; animation: zm-marquee 38s linear infinite; }
+      .zm-marquee.rev { animation-direction: reverse; animation-duration: 46s; }
+      @keyframes zm-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+      .zm-spin { animation: zm-spin 22s linear infinite; }
+      @keyframes zm-spin { to { transform: rotate(360deg); } }
+      .zm-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: 999px; padding: .95rem 1.6rem; font-weight: 700; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; transition: transform .25s cubic-bezier(.22,1,.36,1), background-color .25s, color .25s, box-shadow .25s; }
+      .zm-btn:hover { transform: translateY(-2px); }
+      .zm-btn:active { transform: translateY(0) scale(.98); }
+      .zm-btn-sun { background: #F2B33D; color: #14283A; box-shadow: 0 3px 0 #14283A; border: 1.5px solid #14283A; }
+      .zm-btn-sun:hover { box-shadow: 0 5px 0 #14283A; }
+      .zm-btn-ink { background: #14283A; color: #F3ECDF; }
+      .zm-btn-ink:hover { background: #2E5B6B; }
+      .zm-btn-line { border: 1.5px solid currentColor; }
+      .zm-btn-line:hover { background: #F3ECDF; color: #14283A; border-color: #F3ECDF; }
+      .zm-hover-zoom img { transition: transform 1.2s cubic-bezier(.22,1,.36,1); }
+      .zm-hover-zoom:hover img { transform: scale(1.05); }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .zm-marquee, .zm-spin { animation: none; } *, *::before, *::after { transition-duration: .01ms !important; } }
+    `}</style>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Primitive                                                          */
+/* ------------------------------------------------------------------ */
+
+function Reveal({ children, delay = 0, y = 28, className = "" }) {
+  const reduce = useReducedMotion();
+  return (
+    <motion.div
+      className={className}
+      initial={reduce ? false : { opacity: 0, y }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.9, ease: EASE, delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function Eyebrow({ children, light = false, className = "" }) {
+  return (
+    <p className={`flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.22em] ${light ? "text-sun" : "text-coral"} ${className}`}>
+      <Sun size={14} strokeWidth={2.4} /> {children}
+    </p>
+  );
+}
+
+function Slashes({ text, light = false }) {
+  return (
+    <p className={`text-[11px] font-bold uppercase tracking-[0.2em] ${light ? "text-cream-soft" : "text-soft"}`}>
+      {text.split(" / ").map((t, i) => (
+        <span key={t}>
+          {i > 0 && <span className={`mx-2 ${light ? "text-sun" : "text-coral"}`}>/</span>}
+          {t}
+        </span>
+      ))}
+    </p>
+  );
+}
+
+function Marquee({ items, tone = "sun", reverse = false }) {
+  const tones = {
+    sun: "bg-sun text-ink border-ink",
+    coral: "bg-coral text-cream border-ink",
+    ink: "bg-ink text-cream border-cline",
+  }[tone];
+  const row = (hidden) => (
+    <div className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
+      {items.map((t, i) => (
+        <span key={i} className="zm-bold flex items-center whitespace-nowrap text-3xl sm:text-5xl">
+          <span className="px-5 sm:px-8">{t}</span>
+          <Sunrise size={28} strokeWidth={2} className="shrink-0 opacity-80" />
+        </span>
+      ))}
+    </div>
+  );
+  return (
+    <div className={`overflow-hidden border-y-[1.5px] py-4 sm:py-5 ${tones}`}>
+      <div className={`zm-marquee ${reverse ? "rev" : ""}`}>
+        {row(false)}
+        {row(true)}
+      </div>
+    </div>
+  );
+}
+
+function Sticker({ text, children, className = "", tone = "sun" }) {
+  const pathId = text.replace(/[^a-z]/gi, "").slice(0, 16);
+  const bg = tone === "sun" ? "bg-sun text-ink" : tone === "coral" ? "bg-coral text-cream" : "bg-cream text-ink";
+  return (
+    <div className={`relative flex aspect-square items-center justify-center rounded-full border-[1.5px] border-ink ${bg} ${className}`}>
+      <svg viewBox="0 0 200 200" className="zm-spin absolute inset-0 h-full w-full" aria-hidden="true">
+        <defs>
+          <path id={`c-${pathId}`} d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0" />
+        </defs>
+        <text className="zm-bold" style={{ fontSize: 19, letterSpacing: 3.2, fill: "currentColor" }}>
+          <textPath href={`#c-${pathId}`}>{text}</textPath>
+        </text>
+      </svg>
+      <div className="relative">{children}</div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Header & meniu pe tot ecranul                                      */
+/* ------------------------------------------------------------------ */
+
+function Header({ onReserve }) {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => { document.body.style.overflow = prev; window.removeEventListener("keydown", onKey); };
+  }, [open]);
+
+  const go = (id) => { setOpen(false); setTimeout(() => scrollTo(id), 50); };
+  const solid = scrolled && !open;
+  const tone = solid ? "text-ink" : "text-cream";
+
+  return (
+    <>
+      <header
+        className={`fixed inset-x-0 top-0 z-40 transition-[background-color,box-shadow] duration-500 ${solid ? "bg-[#F3ECDF]/95 shadow-[0_1px_0_rgba(20,40,58,.12)] backdrop-blur" : ""}`}
+        style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
+      >
+        <nav className={`zm-gutter mx-auto grid h-16 max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center sm:h-20 ${tone}`} aria-label="Navigare principală">
+          <button onClick={() => go("contact")} className="zm-focus hidden items-center gap-2 justify-self-start rounded-full text-[11px] font-bold uppercase tracking-[0.2em] sm:inline-flex">
+            <MapPin size={15} /> Găsește-ne
+          </button>
+          <span className="sm:hidden" />
+
+          <button onClick={() => { setOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="zm-focus flex flex-col items-center rounded leading-none" aria-label="Zorile Mării, înapoi sus">
+            <span className="zm-bold text-2xl tracking-[0.04em] sm:text-[1.7rem]">Zorile Mării</span>
+            <span className="zm-serif mt-0.5 hidden text-sm italic opacity-80 sm:block">Constanța · din zori până la apus</span>
+          </button>
+
+          <div className="flex items-center gap-2 justify-self-end">
+            <span className="hidden md:block"><button onClick={onReserve} className="zm-focus zm-btn zm-btn-sun !px-5 !py-2.5">Rezervă</button></span>
+            <button
+              onClick={() => setOpen((v) => !v)}
+              className="zm-focus inline-flex items-center gap-2.5 rounded-full py-2 pl-2 text-[11px] font-bold uppercase tracking-[0.2em]"
+              aria-label={open ? "Închide meniul" : "Deschide meniul"}
+              aria-expanded={open}
+            >
+              <span className="hidden sm:inline">{open ? "Închide" : "Meniu"}</span>
+              <span className="relative flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-current">
+                {open ? <X size={18} /> : <span className="flex w-4 flex-col gap-[5px]"><span className="h-[1.5px] bg-current" /><span className="h-[1.5px] bg-current" /></span>}
+              </span>
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className="fixed inset-0 z-30 overflow-y-auto bg-ink text-cream"
+            initial={{ clipPath: "inset(0 0 100% 0)" }}
+            animate={{ clipPath: "inset(0 0 0% 0)" }}
+            exit={{ clipPath: "inset(0 0 100% 0)" }}
+            transition={{ duration: 0.7, ease: EASE }}
+          >
+            <div className="zm-gutter mx-auto grid min-h-full max-w-[1440px] gap-10 pb-10 pt-28 lg:grid-cols-12 lg:items-end">
+              <ul className="lg:col-span-7">
+                {NAV.map((n, i) => (
+                  <motion.li key={n.id} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 + i * 0.06, duration: 0.7, ease: EASE }}>
+                    <button onClick={() => go(n.id)} className="zm-focus group flex w-full items-baseline gap-4 border-b border-cline py-3 text-left sm:gap-6">
+                      <span className="zm-num w-8 text-xs font-bold text-sun">{pad(i + 1)}</span>
+                      <span className="zm-bold text-5xl leading-none transition-colors group-hover:text-sun sm:text-7xl">{n.label}</span>
+                      <ArrowUpRight size={28} className="ml-auto self-center opacity-0 transition-opacity group-hover:opacity-100" />
+                    </button>
+                  </motion.li>
+                ))}
+              </ul>
+              <motion.div className="lg:col-span-5" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+                <div className="hidden overflow-hidden rounded-[24px] lg:block">
+                  <img src={IMAGES.terrace} alt="" className="aspect-[4/3] w-full object-cover" />
+                </div>
+                <div className="mt-6 grid gap-4 text-sm sm:grid-cols-2">
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-sun">Rezervări</p>
+                    <a href={`tel:${PHONE_TEL}`} className="zm-focus zm-num mt-1 block text-lg">{PHONE_DISPLAY}</a>
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-sun">Adresă</p>
+                    <a href={MAPS_URL} target="_blank" rel="noreferrer" className="zm-focus mt-1 block text-lg">{ADDRESS}</a>
+                  </div>
+                </div>
+                <button onClick={() => { setOpen(false); onReserve(); }} className="zm-focus zm-btn zm-btn-sun mt-8 w-full sm:w-auto">
+                  Rezervă o masă <ArrowRight size={16} />
+                </button>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Hero                                                               */
+/* ------------------------------------------------------------------ */
+
+function Hero({ onReserve }) {
+  const ref = useRef(null);
+  const status = useOpenStatus();
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const imgY = useTransform(scrollYProgress, [0, 1], ["0%", reduce ? "0%" : "16%"]);
+
+  return (
+    <section id="acasa" ref={ref} className="bg-cream p-2 sm:p-3">
+      <div className="relative flex min-h-[calc(100svh-16px)] flex-col overflow-hidden rounded-[22px] bg-ink sm:min-h-[calc(100svh-24px)] sm:rounded-[28px]">
+        <motion.div className="absolute inset-0" style={{ y: imgY }}>
+          <img src={IMAGES.hero} alt="Marea Neagră în lumina zorilor" className="h-[116%] w-full object-cover" width="2000" height="1333" fetchpriority="high" />
+        </motion.div>
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(20,40,58,.55) 0%, rgba(20,40,58,.12) 25%, rgba(20,40,58,.38) 50%, rgba(20,40,58,.85) 100%)" }} />
+
+        <div className="zm-gutter relative mx-auto mt-auto w-full max-w-[1440px] pb-8 pt-32 text-cream sm:pb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: EASE, delay: 0.3 }}
+            className="mb-6 inline-flex items-center gap-2 rounded-full bg-[#F3ECDF]/15 px-3.5 py-1.5 text-xs font-medium backdrop-blur"
+          >
+            <span className={`h-2 w-2 rounded-full ${status.open ? "bg-emerald-400" : "bg-sun"}`} /> {status.label}
+          </motion.div>
+
+          <h1 className="max-w-[15ch] sm:max-w-none">
+            <motion.span
+              className="zm-serif block text-[2.5rem] italic leading-[1.05] sm:text-6xl lg:text-[5.5rem]"
+              initial={reduce ? false : { opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: EASE, delay: 0.45 }}
+            >
+              Acolo unde răsăritul întâlnește
+            </motion.span>
+            <motion.span
+              className="zm-bold mt-2 block text-[3.4rem] leading-[1.02] sm:text-[7rem] sm:leading-[1] lg:text-[10rem]"
+              initial={reduce ? false : { opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: EASE, delay: 0.6 }}
+            >
+              savoarea <span className="text-sun">Mării Negre</span>
+            </motion.span>
+          </h1>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: EASE, delay: 1 }}
+            className="mt-8 flex flex-col gap-7 border-t border-cline pt-6 lg:flex-row lg:items-end lg:justify-between"
+          >
+            <p className="max-w-xl text-base leading-relaxed text-cream-soft sm:text-lg">
+              Pește proaspăt de Marea Neagră, fructe de mare și bucătărie românească reinterpretată, servite pe o terasă cu
+              panoramă spre Portul Turistic Tomis. De la cafeaua de dimineață până la ultimul pahar de vin dobrogean.
+            </p>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <button onClick={onReserve} className="zm-focus zm-btn zm-btn-sun">Rezervă o masă <ArrowRight size={16} /></button>
+              <button onClick={() => scrollTo("meniu")} className="zm-focus zm-btn zm-btn-line text-cream">Vezi meniul</button>
+            </div>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.6, rotate: -20 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 1, ease: EASE, delay: 1.2 }}
+          className="absolute right-4 top-24 w-24 sm:right-10 sm:top-28 sm:w-36"
+        >
+          <Sticker text="★ 4.3 pe Google · peste 2.100 de oaspeți ">
+            <span className="zm-bold mt-1 block text-center text-2xl leading-none sm:text-4xl">4.3</span>
+          </Sticker>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Povestea ("Credem în")                                             */
+/* ------------------------------------------------------------------ */
+
+function Story() {
+  const facts = [
+    { k: "4.3★", v: "nota medie pe Google" },
+    { k: "2.100+", v: "de recenzii publice" },
+    { k: "09:00", v: "deschidem zilnic" },
+  ];
+  return (
+    <section id="poveste" className="bg-cream py-20 sm:py-32">
+      <div className="zm-gutter mx-auto max-w-[1440px]">
+        <div className="grid gap-10 lg:grid-cols-12">
+          <Reveal className="lg:col-span-3">
+            <Eyebrow>Povestea noastră</Eyebrow>
+            <div className="mt-6 hidden lg:block">
+              <Slashes text="Mare / Soare / Masă lungă" />
+            </div>
+          </Reveal>
+          <div className="lg:col-span-9">
+            <Reveal>
+              <h2 className="zm-serif text-[2.1rem] leading-[1.08] sm:text-6xl lg:text-[4.6rem]">
+                Credem în peștele ales dimineața, în <em className="text-sea">rețetele pescărești</em> ale litoralului și într-o
+                masă așezată <span className="zm-bold not-italic text-coral">la marginea mării.</span>
+              </h2>
+            </Reveal>
+          </div>
+        </div>
+
+        <div className="mt-14 grid gap-4 sm:mt-20 sm:grid-cols-2 lg:grid-cols-12 lg:gap-6">
+          <Reveal className="lg:col-span-5">
+            <figure className="zm-hover-zoom overflow-hidden rounded-[22px]">
+              <img src={IMAGES.terrace} alt="Terasa restaurantului deasupra apei" className="aspect-[4/5] w-full object-cover" loading="lazy" />
+            </figure>
+            <figcaption className="mt-3 flex justify-between text-xs font-bold uppercase tracking-[0.18em] text-soft"><span>01 · Terasa</span><span>Portul Tomis</span></figcaption>
+          </Reveal>
+          <Reveal delay={0.1} className="relative lg:col-span-4 lg:mt-24">
+            <figure className="zm-hover-zoom overflow-hidden rounded-[22px]">
+              <img src={IMAGES.table} alt="Masă pregătită pentru cină, cu vin și preparate" className="aspect-[4/5] w-full object-cover" loading="lazy" />
+            </figure>
+            <figcaption className="mt-3 flex justify-between text-xs font-bold uppercase tracking-[0.18em] text-soft"><span>02 · Masa</span><span>Salon renovat</span></figcaption>
+            <div className="absolute -left-6 -top-10 w-24 sm:w-28">
+              <Sticker text="din zori · până la apus · " tone="coral">
+                <Sunrise size={30} />
+              </Sticker>
+            </div>
+          </Reveal>
+          <Reveal delay={0.2} className="flex flex-col justify-end sm:col-span-2 lg:col-span-3">
+            <p className="text-base leading-[1.75] text-soft">
+              Pe faleza Constanței, deasupra Portului Turistic Tomis, Zorile Mării este de mulți ani locul în care
+              constănțenii își sărbătoresc momentele importante. Aici, fiecare dimineață începe cu lumina care se ridică
+              direct din mare.
+            </p>
+            <p className="mt-4 text-base leading-[1.75] text-soft">
+              Am păstrat rețetele pescărești ale litoralului și le-am așezat într-un decor proaspăt renovat: salon luminos,
+              lemn cald, alamă și o terasă deschisă spre briza Mării Negre.
+            </p>
+            <dl className="mt-8 grid grid-cols-3 border-t-[1.5px] border-ink pt-5">
+              {facts.map((f) => (
+                <div key={f.k}>
+                  <dt className="zm-bold zm-num text-2xl sm:text-3xl">{f.k}</dt>
+                  <dd className="mt-1 text-xs leading-snug text-soft">{f.v}</dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Zilele la mare: alege-ți ritmul                                    */
+/* ------------------------------------------------------------------ */
+
+function Rhythm() {
+  const track = useRef(null);
+  const [idx, setIdx] = useState(0);
+
+  const onScroll = () => {
+    const el = track.current;
+    if (!el) return;
+    const card = el.firstElementChild;
+    if (!card) return;
+    const w = card.getBoundingClientRect().width + 16;
+    setIdx(Math.min(RHYTHM.length - 1, Math.round(el.scrollLeft / w)));
+  };
+  const go = (d) => {
+    const el = track.current;
+    const card = el?.firstElementChild;
+    if (!card) return;
+    const w = card.getBoundingClientRect().width + 16;
+    const next = Math.max(0, Math.min(RHYTHM.length - 1, idx + d));
+    el.scrollTo({ left: next * w, behavior: "smooth" });
+  };
+
+  return (
+    <section id="ritm" className="bg-ink py-20 text-cream sm:py-28">
+      <div className="zm-gutter mx-auto max-w-[1440px]">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <Reveal>
+            <Eyebrow light>Zilele la mare</Eyebrow>
+            <h2 className="mt-5">
+              <span className="zm-bold mt-1 block text-5xl leading-[1] sm:text-7xl">Alege-ți ritmul</span>
+              <span className="zm-serif block text-3xl italic text-cream-soft sm:text-5xl">de la cafea până la ultimul pahar</span>
+            </h2>
+          </Reveal>
+          <div className="flex items-center gap-4">
+            <span className="zm-num text-sm font-bold tracking-[0.15em]">
+              <span className="text-sun">{pad(idx + 1)}</span> / {pad(RHYTHM.length)}
+            </span>
+            <button onClick={() => go(-1)} disabled={idx === 0} aria-label="Momentul anterior" className="zm-focus flex h-12 w-12 items-center justify-center rounded-full border-[1.5px] border-[#F3ECDF]/40 transition hover:bg-cream hover:text-ink disabled:opacity-30">
+              <ArrowLeft size={18} />
+            </button>
+            <button onClick={() => go(1)} disabled={idx === RHYTHM.length - 1} aria-label="Momentul următor" className="zm-focus flex h-12 w-12 items-center justify-center rounded-full border-[1.5px] border-[#F3ECDF]/40 transition hover:bg-cream hover:text-ink disabled:opacity-30">
+              <ArrowRight size={18} />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        ref={track}
+        onScroll={onScroll}
+        className="zm-noscroll zm-gutter mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2"
+        style={{ scrollPaddingLeft: "max(16px, calc((100vw - 1440px) / 2 + 32px))" }}
+      >
+        {RHYTHM.map((r, i) => (
+          <article key={r.title} className="zm-hover-zoom group w-[82vw] shrink-0 snap-start sm:w-[46vw] lg:w-[31vw] xl:w-[420px]" style={i === 0 ? { marginLeft: "max(0px, calc((100vw - 1440px) / 2))" } : undefined}>
+            <div className="relative overflow-hidden rounded-[22px]">
+              <img src={r.image} alt="" className="aspect-[4/5] w-full object-cover" loading="lazy" />
+              <span className="zm-bold zm-num absolute left-4 top-4 rounded-full bg-sun px-3.5 py-1.5 text-lg leading-none text-ink">{r.time}</span>
+              <span className="zm-bold absolute bottom-3 right-4 text-7xl leading-none text-[#F3ECDF]/90">{pad(i + 1)}</span>
+            </div>
+            <div className="mt-5">
+              <Slashes text={r.tags} light />
+              <h3 className="mt-3">
+                <span className="zm-bold text-3xl">{r.title}</span>{" "}
+                <span className="zm-serif text-3xl italic text-sun">{r.line}</span>
+              </h3>
+              <p className="mt-2 max-w-sm text-sm leading-relaxed text-cream-soft">{r.text}</p>
+            </div>
+          </article>
+        ))}
+        <div className="w-px shrink-0" aria-hidden="true" />
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Meniu                                                              */
+/* ------------------------------------------------------------------ */
+
+function tagIcon(t) {
+  if (/gluten|lactoz|Vegetarian/i.test(t)) return <Leaf size={11} />;
+  if (/Picant|jar/i.test(t)) return <Flame size={11} />;
+  return null;
+}
+
+function DishRow({ dish, index, Icon }) {
+  return (
+    <motion.article
+      layout
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5, ease: EASE, delay: index * 0.05 }}
+      className="group grid grid-cols-[auto_1fr] gap-4 border-b-[1.5px] border-line py-6 sm:grid-cols-[auto_auto_1fr_auto] sm:items-center sm:gap-6"
+    >
+      <span className="zm-num hidden w-8 text-xs font-bold text-coral sm:block">{pad(index + 1)}</span>
+      <div className="h-20 w-20 overflow-hidden rounded-full border-[1.5px] border-ink sm:h-24 sm:w-24">
+        {dish.image ? (
+          <img src={dish.image} alt="" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+        ) : (
+          <span className="flex h-full w-full items-center justify-center bg-sun text-ink"><Icon size={28} /></span>
+        )}
+      </div>
+      <div className="min-w-0">
+        <h3 className="zm-bold text-[1.4rem] leading-[1.05] sm:text-3xl">{dish.name}</h3>
+        <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-soft">{dish.desc}</p>
+        <div className="mt-2.5 flex flex-wrap gap-1.5">
+          {dish.tags.map((t) => (
+            <span key={t} className="inline-flex items-center gap-1 rounded-full border border-line px-2.5 py-0.5 text-[11px] font-medium text-soft">
+              {tagIcon(t)} {t}
+            </span>
+          ))}
+        </div>
+        <p className="zm-num mt-3 text-sm font-bold sm:hidden">
+          {dish.price} RON{dish.priceAlt && <span className="font-medium text-soft"> · {dish.priceAlt} RON / sticlă</span>}
+        </p>
+      </div>
+      <p className="zm-num hidden text-right sm:block">
+        <span className="zm-bold text-3xl">{dish.price}</span> <span className="text-xs font-bold">RON</span>
+        {dish.priceAlt && <span className="block text-xs text-soft">{dish.priceAlt} RON / sticlă</span>}
+      </p>
+    </motion.article>
+  );
+}
+
+function MenuShowcase({ onReserve }) {
+  const [active, setActive] = useState(MENU[0].id);
+  const cat = MENU.find((c) => c.id === active);
+
+  return (
+    <section id="meniu" className="bg-paper py-20 sm:py-32">
+      <div className="zm-gutter mx-auto max-w-[1440px]">
+        <Reveal>
+          <Eyebrow>Meniu de semnătură</Eyebrow>
+          <h2 className="mt-5">
+            <span className="zm-bold mt-1 block text-[3.4rem] leading-[1] sm:text-8xl lg:text-[9rem]">Gustul litoralului</span>
+            <span className="zm-serif block text-3xl italic text-sea sm:text-5xl">la fiecare masă</span>
+          </h2>
+        </Reveal>
+
+        <div className="mt-10 flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
+          <div role="tablist" aria-label="Categorii meniu" className="zm-noscroll -mx-1 flex gap-2 overflow-x-auto px-1 py-1">
+            {MENU.map((c) => {
+              const on = c.id === active;
+              const Icon = c.icon;
+              return (
+                <button
+                  key={c.id}
+                  role="tab"
+                  id={`tab-${c.id}`}
+                  aria-selected={on}
+                  aria-controls={`panel-${c.id}`}
+                  onClick={() => setActive(c.id)}
+                  className={`zm-focus inline-flex shrink-0 items-center gap-2 rounded-full border-[1.5px] border-ink px-4 py-2.5 text-xs font-bold uppercase tracking-[0.12em] transition-colors ${on ? "bg-ink text-cream" : "hover:bg-sun"}`}
+                >
+                  <Icon size={15} /> {c.label}
+                </button>
+              );
+            })}
+          </div>
+          <p className="max-w-md text-sm leading-relaxed text-soft">
+            Peștele se alege dimineața, după ce intră bărcile în port. Meniul se schimbă odată cu marea, așa că întrebați
+            ospătarul de captura zilei.
+          </p>
+        </div>
+
+        <div id={`panel-${cat.id}`} role="tabpanel" aria-labelledby={`tab-${cat.id}`} className="mt-10 grid gap-8 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-5">
+            <div className="relative overflow-hidden rounded-[22px] bg-ink lg:sticky lg:top-28">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={cat.image}
+                  src={cat.image}
+                  alt={cat.caption}
+                  initial={{ opacity: 0, scale: 1.06 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.7, ease: EASE }}
+                  className="aspect-[4/3] w-full object-cover lg:aspect-[4/5]"
+                />
+              </AnimatePresence>
+              <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 50%, rgba(20,40,58,.85))" }} />
+              <div className="absolute inset-x-0 bottom-0 p-6 text-cream">
+                <p className="zm-bold text-4xl sm:text-5xl">{cat.short}</p>
+                <p className="zm-serif mt-1 text-xl italic text-cream-soft">{cat.caption}</p>
+              </div>
+            </div>
+          </div>
+          <div className="border-t-[1.5px] border-ink lg:col-span-7">
+            <AnimatePresence mode="popLayout">
+              {cat.dishes.map((d, i) => (
+                <DishRow key={cat.id + d.name} dish={d} index={i} Icon={cat.icon} />
+              ))}
+            </AnimatePresence>
+            <div className="mt-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+              <p className="text-xs leading-relaxed text-soft">Prețurile sunt în RON și includ TVA. Spuneți-ne de alergii sau restricții alimentare la rezervare.</p>
+              <button onClick={onReserve} className="zm-focus zm-btn zm-btn-ink shrink-0">
+                Rezervă pentru captura de mâine <ArrowUpRight size={16} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Ziua / Noaptea                                                     */
+/* ------------------------------------------------------------------ */
+
+function DayNight() {
+  const panels = [
+    { icon: Sun, top: "Ziua", big: "se lungește", text: "Mese așezate cu fața spre mare, briză sărată și prânzuri lungi pe terasa panoramică, chiar deasupra Portului Tomis.", image: IMAGES.terrace, tags: "Terasă / Briză / Panoramă" },
+    { icon: Moon, top: "Noaptea", big: "se aprinde", text: "Muzică live și seri tematice vineri și duminică, până la 23:30. Vinuri dobrogene și internaționale, recomandate de somelier.", image: IMAGES.liveNight, tags: "Live / Vin / Lumini calde" },
+  ];
+  return (
+    <section id="terasa" className="grid bg-ink md:grid-cols-2">
+      {panels.map((p) => {
+        const Icon = p.icon;
+        return (
+          <div key={p.top} className="zm-hover-zoom relative min-h-[78svh] overflow-hidden text-cream md:min-h-[92svh]">
+            <img src={p.image} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(20,40,58,.25) 0%, rgba(20,40,58,.1) 40%, rgba(20,40,58,.85) 100%)" }} />
+            <div className="relative flex h-full min-h-[inherit] flex-col justify-end p-6 sm:p-10 lg:p-14">
+              <Icon size={30} className="mb-5 text-sun" />
+              <h2>
+                <span className="zm-bold mt-1 block text-6xl leading-[1] sm:text-8xl">{p.top}</span>
+                <span className="zm-serif block text-4xl italic sm:text-6xl">{p.big}</span>
+              </h2>
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-cream-soft sm:text-base">{p.text}</p>
+              <div className="mt-5"><Slashes text={p.tags} light /></div>
+            </div>
+          </div>
+        );
+      })}
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Evenimente                                                         */
+/* ------------------------------------------------------------------ */
+
+function Events({ onReserve }) {
+  const items = [
+    { icon: Music, meta: "Vineri & Duminică", title: "Seri cu muzică live", text: "Acustic, jazz și standarde mediteraneene, în serile de weekend.", image: IMAGES.liveNight },
+    { icon: Users, meta: "Salon privat", title: "Evenimente private", text: "Botezuri, aniversări, logodne. Salon dedicat sau terasa întreagă, cu meniu și vinuri alese împreună cu bucătarul.", image: IMAGES.salon },
+    { icon: Wine, meta: "Pentru firme", title: "Mese corporate", text: "Prânzuri de afaceri și cine de echipă, cu facturare pe firmă.", image: IMAGES.wineToast },
+  ];
+  return (
+    <section id="evenimente" className="bg-cream py-20 sm:py-32">
+      <div className="zm-gutter mx-auto max-w-[1440px]">
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+          <Reveal className="lg:col-span-7">
+            <Eyebrow>Evenimente</Eyebrow>
+            <h2 className="mt-5">
+              <span className="zm-bold mt-1 block text-5xl leading-[1] sm:text-7xl">Momentele importante</span>
+              <span className="zm-serif block text-3xl italic text-sea sm:text-5xl">merită marea</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1} className="lg:col-span-5">
+            <p className="text-base leading-relaxed text-soft">
+              Organizăm aniversări, botezuri, logodne și întâlniri de afaceri cu aceeași atenție ca o cină pentru doi.
+              Spuneți-ne data și numărul de invitați, iar noi revenim cu o propunere.
+            </p>
+          </Reveal>
+        </div>
+
+        <ul className="mt-12 border-t-[1.5px] border-ink">
+          {items.map((it, i) => {
+            const Icon = it.icon;
+            return (
+              <Reveal key={it.title} delay={i * 0.06}>
+                <li className="group grid gap-4 border-b-[1.5px] border-ink py-6 sm:grid-cols-[3rem_14rem_1fr_auto] sm:items-center sm:gap-8 sm:py-8">
+                  <span className="zm-num hidden text-xs font-bold text-coral sm:block">{pad(i + 1)}</span>
+                  <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-soft">
+                    <Icon size={15} className="text-coral" /> {it.meta}
+                  </span>
+                  <div>
+                    <h3 className="zm-bold text-3xl leading-none transition-colors group-hover:text-coral sm:text-5xl">{it.title}</h3>
+                    <p className="mt-2 max-w-xl text-sm leading-relaxed text-soft">{it.text}</p>
+                  </div>
+                  <div className="hidden h-24 w-36 overflow-hidden rounded-[14px] md:block">
+                    <img src={it.image} alt="" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+                  </div>
+                </li>
+              </Reveal>
+            );
+          })}
+        </ul>
+
+        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <button onClick={onReserve} className="zm-focus zm-btn zm-btn-sun">Solicită o ofertă <ArrowRight size={16} /></button>
+          <a href={`tel:${PHONE_TEL}`} className="zm-focus zm-btn zm-btn-ink"><Phone size={15} /> {PHONE_DISPLAY}</a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Rezervare                                                          */
+/* ------------------------------------------------------------------ */
+
+function todayISO() {
+  const d = new Date();
+  return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+}
+
+function slotsFor(dateStr) {
+  const day = dateStr ? new Date(`${dateStr}T12:00:00`).getDay() : 1;
+  const lastSeat = HOURS[day] - 90;
+  const out = [];
+  for (let m = 12 * 60; m <= lastSeat; m += 30) out.push(fmtTime(m));
+  return out;
+}
+
+function ReservationForm({ compact = false, onDone }) {
+  const [form, setForm] = useState({ date: todayISO(), time: "19:30", guests: 2, zone: "terasa", name: "", phone: "", notes: "" });
+  const [errors, setErrors] = useState({});
+  const [sent, setSent] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const slots = useMemo(() => slotsFor(form.date), [form.date]);
+
+  useEffect(() => {
+    if (!slots.includes(form.time)) setForm((f) => ({ ...f, time: slots[slots.length - 3] || slots[0] }));
+  }, [slots]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target ? e.target.value : e }));
+
+  const submit = (e) => {
+    e.preventDefault();
+    const err = {};
+    if (!form.name.trim()) err.name = "Spuneți-ne pe ce nume facem rezervarea.";
+    if (!/^(\+?40|0)\s?\d{2,3}[\s.-]?\d{3}[\s.-]?\d{3,4}$/.test(form.phone.trim())) err.phone = "Introduceți un număr de telefon românesc, de ex. 0722 123 456.";
+    setErrors(err);
+    if (Object.keys(err).length === 0) setSent(true);
+  };
+
+  const dateLabel = new Date(`${form.date}T12:00:00`).toLocaleDateString("ro-RO", { weekday: "long", day: "numeric", month: "long" });
+  const summary = `Rezervare Zorile Mării: ${form.name}, ${form.guests} ${form.guests === 1 ? "persoană" : "persoane"}, ${dateLabel}, ora ${form.time}, ${form.zone === "terasa" ? "terasă cu vedere la mare" : "salon interior"}. Telefon: ${form.phone}.${form.notes ? " Mențiuni: " + form.notes : ""}`;
+
+  const copy = async () => {
+    try { await navigator.clipboard.writeText(summary); setCopied(true); setTimeout(() => setCopied(false), 2200); } catch { setCopied(false); }
+  };
+
+  if (sent) {
+    return (
+      <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, ease: EASE }}>
+        <span className="flex h-14 w-14 items-center justify-center rounded-full border-[1.5px] border-ink bg-sun"><Check size={24} /></span>
+        <h3 className="zm-bold mt-6 text-3xl sm:text-4xl">Cererea este pregătită</h3>
+        <p className="mt-3 text-sm leading-relaxed text-soft">
+          Confirmăm fiecare masă telefonic. Sunați-ne la <span className="zm-num select-all font-bold text-ink">{PHONE_DISPLAY}</span> și
+          spuneți-ne detaliile de mai jos.
+        </p>
+        <div className="mt-6 rounded-2xl border-[1.5px] border-line bg-cream p-5 text-sm leading-relaxed">
+          <p className="select-all">{summary}</p>
+        </div>
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+          <a href={`tel:${PHONE_TEL}`} className="zm-focus zm-btn zm-btn-sun"><Phone size={15} /> Sună acum</a>
+          <button onClick={copy} className="zm-focus zm-btn zm-btn-ink">
+            {copied ? <Check size={15} /> : <Copy size={15} />} {copied ? "Detalii copiate" : "Copiază detaliile"}
+          </button>
+          <button onClick={() => { setSent(false); onDone?.(); }} className="zm-focus rounded-full px-4 py-3 text-sm font-medium text-soft hover:text-ink">
+            Modifică
+          </button>
+        </div>
+      </motion.div>
+    );
+  }
+
+  const label = "mb-2 block text-[11px] font-bold uppercase tracking-[0.16em] text-soft";
+  const field = "zm-field w-full rounded-xl px-4 py-3.5 text-sm";
+  const uid = compact ? "m" : "i";
+
+  return (
+    <form onSubmit={submit} noValidate className="grid gap-5">
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor={`${uid}-date`} className={label}>Data</label>
+          <input id={`${uid}-date`} type="date" min={todayISO()} value={form.date} onChange={set("date")} className={field} required />
+        </div>
+        <div>
+          <label htmlFor={`${uid}-time`} className={label}>Ora</label>
+          <select id={`${uid}-time`} value={form.time} onChange={set("time")} className={`${field} zm-num`}>
+            {slots.map((s) => <option key={s} value={s}>{s}</option>)}
+          </select>
+        </div>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <span id={`${uid}-guests-l`} className={label}>Număr de persoane</span>
+          <div className="zm-field flex items-center justify-between rounded-xl px-2 py-1.5" role="group" aria-labelledby={`${uid}-guests-l`}>
+            <button type="button" aria-label="Mai puține persoane" onClick={() => set("guests")(Math.max(1, form.guests - 1))} className="zm-focus flex h-10 w-10 items-center justify-center rounded-lg hover:bg-cream"><Minus size={16} /></button>
+            <span className="zm-num text-base font-bold" aria-live="polite">
+              {form.guests} {form.guests === 1 ? "persoană" : "persoane"}
+            </span>
+            <button type="button" aria-label="Mai multe persoane" onClick={() => set("guests")(Math.min(30, form.guests + 1))} className="zm-focus flex h-10 w-10 items-center justify-center rounded-lg hover:bg-cream"><Plus size={16} /></button>
+          </div>
+        </div>
+        <div>
+          <span id={`${uid}-zone-l`} className={label}>Unde doriți să stați</span>
+          <div className="grid grid-cols-2 gap-1 rounded-xl border-[1.5px] border-line bg-white p-1" role="radiogroup" aria-labelledby={`${uid}-zone-l`}>
+            {[{ v: "terasa", t: "Terasă cu vedere la mare" }, { v: "interior", t: "Salon interior" }].map((o) => (
+              <button
+                key={o.v}
+                type="button"
+                role="radio"
+                aria-checked={form.zone === o.v}
+                onClick={() => set("zone")(o.v)}
+                className={`zm-focus rounded-lg px-2 py-2.5 text-xs font-bold leading-tight transition-colors sm:text-[13px] ${form.zone === o.v ? "bg-ink text-cream" : "text-soft hover:text-ink"}`}
+              >
+                {o.t}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor={`${uid}-name`} className={label}>Nume</label>
+          <input id={`${uid}-name`} value={form.name} onChange={set("name")} autoComplete="name" placeholder="Ana Popescu" className={field} aria-invalid={!!errors.name} aria-describedby={errors.name ? `${uid}-name-e` : undefined} />
+          {errors.name && <p id={`${uid}-name-e`} className="mt-1.5 text-xs font-medium text-coral">{errors.name}</p>}
+        </div>
+        <div>
+          <label htmlFor={`${uid}-phone`} className={label}>Telefon</label>
+          <input id={`${uid}-phone`} type="tel" inputMode="tel" value={form.phone} onChange={set("phone")} autoComplete="tel" placeholder="07xx xxx xxx" className={field} aria-invalid={!!errors.phone} aria-describedby={errors.phone ? `${uid}-phone-e` : undefined} />
+          {errors.phone && <p id={`${uid}-phone-e`} className="mt-1.5 text-xs font-medium text-coral">{errors.phone}</p>}
+        </div>
+      </div>
+
+      {!compact && (
+        <div>
+          <label htmlFor={`${uid}-notes`} className={label}>Mențiuni (opțional)</label>
+          <textarea id={`${uid}-notes`} rows={2} value={form.notes} onChange={set("notes")} placeholder="Aniversare, alergii, scaun pentru copii…" className={`${field} resize-none`} />
+        </div>
+      )}
+
+      <button type="submit" className="zm-focus zm-btn zm-btn-sun mt-1 w-full !py-4">
+        Trimite cererea de rezervare <ArrowRight size={16} />
+      </button>
+      <p className="text-center text-xs text-soft">Fiecare rezervare este confirmată telefonic de echipa noastră.</p>
+    </form>
+  );
+}
+
+function InfoBlocks() {
+  const status = useOpenStatus();
+  const [copied, setCopied] = useState(false);
+  const { day } = bucharestNow();
+  const rows = [
+    { d: "Luni – Joi", h: "09:00 – 22:00", days: [1, 2, 3, 4] },
+    { d: "Vineri", h: "09:00 – 23:30", days: [5] },
+    { d: "Sâmbătă", h: "09:00 – 22:00", days: [6] },
+    { d: "Duminică", h: "09:00 – 23:30", days: [0] },
+  ];
+  const copy = async () => {
+    try { await navigator.clipboard.writeText(PHONE_DISPLAY); setCopied(true); setTimeout(() => setCopied(false), 2000); } catch { setCopied(false); }
+  };
+
+  return (
+    <div className="grid gap-4">
+      <div className="rounded-[22px] border-[1.5px] border-ink bg-paper p-6">
+        <div className="flex items-start gap-4">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ink text-sun"><MapPin size={18} /></span>
+          <div>
+            <p className="zm-bold text-2xl">Adresă</p>
+            <p className="mt-1 text-sm">{ADDRESS}</p>
+            <p className="text-sm text-soft">Cu panoramă spre Marea Neagră și Portul Turistic Tomis</p>
+            <a href={MAPS_URL} target="_blank" rel="noreferrer" className="zm-focus mt-2 inline-flex items-center gap-1 rounded text-xs font-bold uppercase tracking-[0.14em] text-coral">
+              Deschide în Google Maps <ArrowUpRight size={14} />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className="rounded-[22px] border-[1.5px] border-ink bg-paper p-6">
+        <div className="flex items-start gap-4">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ink text-sun"><Phone size={18} /></span>
+          <div className="flex-1">
+            <p className="zm-bold text-2xl">Rezervări</p>
+            <div className="mt-1 flex flex-wrap items-center gap-3">
+              <a href={`tel:${PHONE_TEL}`} className="zm-focus zm-num select-all rounded text-xl font-bold hover:text-coral">{PHONE_DISPLAY}</a>
+              <button onClick={copy} className="zm-focus inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1 text-xs text-soft hover:text-ink" aria-label="Copiază numărul de telefon">
+                {copied ? <Check size={13} /> : <Copy size={13} />} {copied ? "Copiat" : "Copiază"}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="rounded-[22px] border-[1.5px] border-ink bg-paper p-6">
+        <div className="flex items-start gap-4">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ink text-sun"><Clock size={18} /></span>
+          <div className="flex-1">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <p className="zm-bold text-2xl">Program</p>
+              <span className="inline-flex items-center gap-1.5 text-xs font-medium text-soft">
+                <span className={`h-2 w-2 rounded-full ${status.open ? "bg-emerald-500" : "bg-coral"}`} /> {status.label}
+              </span>
+            </div>
+            <ul className="mt-2 grid gap-0.5">
+              {rows.map((r) => {
+                const today = r.days.includes(day);
+                return (
+                  <li key={r.d} className={`zm-num flex items-center justify-between rounded-lg px-3 py-1.5 text-sm ${today ? "bg-sun font-bold" : "text-soft"}`}>
+                    <span>{r.d}{today && <span className="ml-2 text-[10px] uppercase tracking-[0.14em]">azi</span>}</span>
+                    <span>{r.h}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Contact() {
+  return (
+    <section id="contact" className="bg-sea py-20 sm:py-32">
+      <div className="zm-gutter mx-auto max-w-[1440px]">
+        <Reveal>
+          <Eyebrow light>Rezervări & Contact</Eyebrow>
+          <h2 className="mt-5 text-cream">
+            <span className="zm-serif block text-4xl italic sm:text-6xl">Masa ta te așteaptă</span>
+            <span className="zm-bold mt-2 block text-[3.4rem] leading-[1] sm:mt-5 sm:text-8xl lg:mt-7 lg:text-[8.5rem]">lângă valuri</span>
+          </h2>
+        </Reveal>
+        <div className="mt-12 grid gap-4 lg:grid-cols-12 lg:gap-6">
+          <Reveal className="lg:col-span-7">
+            <div className="h-full rounded-[22px] border-[1.5px] border-ink bg-paper p-6 sm:p-10">
+              <p className="zm-bold mb-6 text-3xl">Rezervă o masă</p>
+              <ReservationForm />
+            </div>
+          </Reveal>
+          <Reveal delay={0.1} className="lg:col-span-5">
+            <InfoBlocks />
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Modal & Footer                                                     */
+/* ------------------------------------------------------------------ */
+
+function ReservationModal({ open, onClose }) {
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => e.key === "Escape" && onClose();
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => { document.body.style.overflow = prev; window.removeEventListener("keydown", onKey); };
+  }, [open, onClose]);
+
+  return (
+    <AnimatePresence>
+      {open && (
+        <motion.div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
+          <div className="absolute inset-0 bg-[#14283A]/60 backdrop-blur-sm" onClick={onClose} />
+          <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="zm-modal-title"
+            initial={{ y: 60, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 40, opacity: 0 }}
+            transition={{ duration: 0.5, ease: EASE }}
+            className="relative max-h-[92svh] w-full max-w-2xl overflow-y-auto rounded-t-[24px] border-[1.5px] border-ink bg-paper p-6 sm:rounded-[24px] sm:p-10"
+            style={{ paddingBottom: "max(24px, env(safe-area-inset-bottom, 0px))" }}
+          >
+            <div className="mb-8 flex items-start justify-between gap-4">
+              <div>
+                <p className="zm-serif text-xl italic text-sea">Zorile Mării</p>
+                <h2 id="zm-modal-title" className="zm-bold mt-1 text-4xl sm:text-5xl">Rezervă o masă</h2>
+              </div>
+              <button onClick={onClose} aria-label="Închide" className="zm-focus flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-[1.5px] border-ink hover:bg-sun">
+                <X size={18} />
+              </button>
+            </div>
+            <ReservationForm compact />
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
+function Footer({ onReserve }) {
+  const cards = [
+    { id: "meniu", t: "Meniul", s: "Captura zilei" },
+    { id: "terasa", t: "Terasa", s: "Ziua & noaptea" },
+    { id: "evenimente", t: "Evenimente", s: "Salon privat" },
+    { id: "contact", t: "Rezervări", s: PHONE_DISPLAY },
+  ];
+  return (
+    <footer className="bg-ink pt-20 text-cream" style={{ paddingBottom: "max(28px, env(safe-area-inset-bottom, 0px))" }}>
+      <div className="zm-gutter mx-auto max-w-[1440px]">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <h2>
+            <span className="zm-serif block text-3xl italic text-cream-soft sm:text-5xl">Lumea</span>
+            <span className="zm-bold mt-1 block text-5xl leading-[1] sm:text-7xl">Zorile Mării</span>
+          </h2>
+          <p className="zm-serif max-w-md text-2xl leading-snug">Ne vedem la răsărit, la prânz sau la apus. Marea e aceeași, masa vă așteaptă.</p>
+        </div>
+        <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {cards.map((c) => (
+            <button key={c.id} onClick={() => scrollTo(c.id)} className="zm-focus group flex items-center justify-between rounded-[18px] border-[1.5px] border-cline p-5 text-left transition-colors hover:border-sun hover:bg-sun hover:text-ink">
+              <span>
+                <span className="zm-bold mt-1 block text-2xl">{c.t}</span>
+                <span className="zm-num text-sm opacity-70">{c.s}</span>
+              </span>
+              <ArrowUpRight size={22} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </button>
+          ))}
+        </div>
+        <div className="mt-10 flex flex-col gap-4 border-t border-cline pt-6 text-sm text-cream-soft md:flex-row md:items-center md:justify-between">
+          <p className="zm-num">{ADDRESS} · <a href={`tel:${PHONE_TEL}`} className="zm-focus hover:text-sun">{PHONE_DISPLAY}</a></p>
+          <button onClick={onReserve} className="zm-focus zm-btn zm-btn-sun self-start">Rezervă o masă <ArrowRight size={16} /></button>
+        </div>
+      </div>
+      <p aria-hidden="true" className="zm-bold pointer-events-none mt-12 select-none whitespace-nowrap text-center text-[17.5vw] leading-[0.82] text-sun">
+        Zorile Mării
+      </p>
+      <p className="zm-gutter mx-auto mt-6 max-w-[1440px] text-xs text-cream-soft">© {new Date().getFullYear()} Restaurant Zorile Mării, Constanța. Fotografii: Unsplash.</p>
+    </footer>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  App                                                                */
+/* ------------------------------------------------------------------ */
+
+function ZorileMarii() {
+  const [modal, setModal] = useState(false);
+  const openModal = () => setModal(true);
+
+  return (
+    <div className="zm-root min-h-screen overflow-x-clip">
+      <GlobalStyles />
+      <Header onReserve={openModal} />
+      <main>
+        <Hero onReserve={openModal} />
+        <Marquee items={TICKER_1} tone="sun" />
+        <Story />
+        <Rhythm />
+        <MenuShowcase onReserve={openModal} />
+        <Marquee items={TICKER_2} tone="coral" reverse />
+        <DayNight />
+        <Events onReserve={openModal} />
+        <Contact />
+      </main>
+      <Footer onReserve={openModal} />
+      <ReservationModal open={modal} onClose={() => setModal(false)} />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<ZorileMarii />);
+</script>
+
+</body>
+</html>
